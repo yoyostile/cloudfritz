@@ -9,9 +9,7 @@ spec:
       labels:
         app: cloudfritz
     spec:
-      imagePullSecrets:
-      - name: gitlab-reg-secret
       containers:
       - name: cloudfritz
-        image: registry.gitlab.com/yoyostile/cloudfritz:latest
+        image: yoyostile/cloudfritz:latest
         imagePullPolicy: Always
