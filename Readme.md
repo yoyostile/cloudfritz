@@ -11,3 +11,11 @@ https://cloudfritz.r4r3.me/update?key=<pass>&email=<username>&zone=YOURZONE&doma
 ```
 
 ![Like this](https://s3.r4r3.me/random/Screen%20Shot%202018-05-16%20at%2019.00.17.png)
+
+
+## Private Usage
+
+Use the docker image to start a new container, as simple as:
+```bash
+docker run -p 4567:4567 yoyostile/cloudfritz:latest
+```
