@@ -40,7 +40,17 @@ get '/update' do
   TYPE_MAPPING.each_key do |type|
     record = zone.dns_records.find_by_params(name: params[:domain], type: type)
     value = params[TYPE_MAPPING[type]]
-    record.update_content(value) if value
+    if record && value
+      record.update_content(value)
+    elsif value
+      name = params[:domain].gsub(/.#{params[:zone]}/, '')
+      zone.dns_records.post({
+        type: type,
+        name: name,
+        content: value,
+        proxied: false
+      }.to_json, content_type: 'application/json')
+    end
   end
   'Ok.'
 end
