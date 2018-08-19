@@ -6,6 +6,7 @@ metadata:
     kubernetes.io/tls-acme: "true"
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/enable-access-log: "false"
+    external-dns.alpha.kubernetes.io/target: "dns.r4r3.me"
 spec:
   tls:
   - secretName: cloudfritz-tls
@@ -17,5 +18,21 @@ spec:
       paths:
       - path: /
         backend:
+          serviceName: cloudfritz
+          servicePort: http
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: cloudfritz-ingress-internal
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    external-dns.alpha.kubernetes.io/target: "sn0w.lan.r4r3.me"
+spec:
+  rules:
+  - host: cloudfritz.lan.r4r3.me
+    http:
+      paths:
+      - backend:
           serviceName: cloudfritz
           servicePort: http
