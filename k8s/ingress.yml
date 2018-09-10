@@ -27,7 +27,7 @@ metadata:
   name: cloudfritz-ingress-internal
   annotations:
     kubernetes.io/ingress.class: "nginx"
-    external-dns.alpha.kubernetes.io/target: "sn0w.lan.r4r3.me"
+    external-dns.alpha.kubernetes.io/target: "k8s-master.lan.r4r3.me"
 spec:
   rules:
   - host: cloudfritz.lan.r4r3.me
