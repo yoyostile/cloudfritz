@@ -26,6 +26,7 @@ module Cloudflare
       response = get(params: params)
 
       return if response.empty?
+
       record = response.results.first
 
       DNSRecord.new(concat_urls(url, record[:id]), record, **options)
@@ -53,4 +54,8 @@ get '/update' do
     end
   end
   'Ok.'
+end
+
+get '/healthz' do
+  'Running.'
 end

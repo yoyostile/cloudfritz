@@ -13,3 +13,15 @@ spec:
       - name: cloudfritz
         image: yoyostile/cloudfritz:latest
         imagePullPolicy: Always
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 4567
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 4567
+          initialDelaySeconds: 20
+          periodSeconds: 10
