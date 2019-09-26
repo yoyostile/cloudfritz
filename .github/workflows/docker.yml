@@ -7,13 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: azure/docker-login@v1
+    - name: Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        login-server: docker.io
-        username: yoyostile
-        password: ${{ secrets.REGISTRY_PASSWORD }}
-    - name: Build the Docker image
-      run: |
-        docker build . -t yoyostile/cloudfritz:$(date +%s) -t yoyostile/cloudfritz:latest
-        docker push yoyostile/cloudfritz:$(date +%s)
-        docker push yoyostile/cloudfritz:latest
+        name: myDocker/repository
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
