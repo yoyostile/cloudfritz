@@ -14,6 +14,7 @@ jobs:
         password: ${{ secrets.REGISTRY_PASSWORD }}
     - name: Build the Docker image
       run: |
+        ls -alh
         docker build . -t yoyostile/cloudfritz:$(date +%s) -t yoyostile/cloudfritz:latest
         docker push yoyostile/cloudfritz:$(date +%s)
         docker push yoyostile/cloudfritz:latest
