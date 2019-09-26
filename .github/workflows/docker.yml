@@ -5,8 +5,8 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
+    - uses: actions/checkout@master
     - uses: azure/docker-login@v1
       with:
         login-server: docker.io
