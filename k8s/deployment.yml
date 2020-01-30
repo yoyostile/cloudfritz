@@ -25,3 +25,7 @@ spec:
             port: 4567
           initialDelaySeconds: 20
           periodSeconds: 10
+      dnsConfig:
+        options:
+          - name: ndots
+            value: "1"
